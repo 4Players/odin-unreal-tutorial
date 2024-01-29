@@ -1,6 +1,27 @@
 # odin-unreal-tutorial
 Project accompanying the unreal tutorial.
 
+## Getting Started
+
+Clone the git repo into a working directory of your choice.
+
+This repository uses [LFS](https://git-lfs.github.com) (large file storage) to manage pre-compiled binaries. Note that a standard clone of the repository might only retrieve the metadata about these files managed with LFS. In order to retrieve the actual data with LFS, please follow these steps:
+
+1. Clone the repository:  
+   ```
+   git clone https://github.com/4Players/odin-unreal-tutorial.git
+   ```
+
+2. Cache the actual LFS data on your local machine and replace the metadata in the binary files with their actual contents: 
+   ```
+   git lfs fetch
+   git lfs checkout
+   ```
+   ... or if you have a recent LFS version:
+   ```
+   git lfs pull
+   ```
+
 ### Installing Visual Studio and Compiling the Project
 
 Sometimes it is necessary to compile from Visual Studio:
