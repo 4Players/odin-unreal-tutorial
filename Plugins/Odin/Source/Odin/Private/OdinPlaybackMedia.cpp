@@ -1,9 +1,9 @@
-/* Copyright (c) 2022-2023 4Players GmbH. All rights reserved. */
+/* Copyright (c) 2022-2024 4Players GmbH. All rights reserved. */
 
 #include "OdinPlaybackMedia.h"
 #include "OdinRoom.h"
 
-#include "OdinCore/include/odin.h"
+#include "odin_sdk.h"
 
 UOdinPlaybackMedia::UOdinPlaybackMedia() {}
 
@@ -19,6 +19,13 @@ int32 UOdinPlaybackMedia::GetMediaId()
     uint16_t media_id;
     odin_media_stream_media_id(stream_handle_, &media_id);
     return media_id;
+}
+
+int64 UOdinPlaybackMedia::GetPeerId()
+{
+    uint64_t peer_id;
+    odin_media_stream_peer_id(stream_handle_, &peer_id);
+    return peer_id;
 }
 
 FOdinAudioStreamStats UOdinPlaybackMedia::AudioStreamStats()

@@ -1,4 +1,4 @@
-/* Copyright (c) 2022-2023 4Players GmbH. All rights reserved. */
+/* Copyright (c) 2022-2024 4Players GmbH. All rights reserved. */
 
 #pragma once
 
@@ -13,5 +13,5 @@ class ODIN_API FOdinModule : public IModuleInterface
     virtual void ShutdownModule() override;
 
   private:
-    void *OdinLibraryHandle;
+    void* OdinLibraryHandle = nullptr;
 };
