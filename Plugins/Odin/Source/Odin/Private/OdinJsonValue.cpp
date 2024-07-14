@@ -1,4 +1,4 @@
-/* Copyright (c) 2022-2023 4Players GmbH. All rights reserved. */
+/* Copyright (c) 2022-2024 4Players GmbH. All rights reserved. */
 
 #include "OdinJsonValue.h"
 #include "CoreMinimal.h"
@@ -61,17 +61,6 @@ UOdinJsonValue *UOdinJsonValue::ConstructJsonValueObject(UObject         *WorldC
 {
     TSharedPtr<FJsonValue> NewVal =
         MakeShareable(new FJsonValueObject(JsonObject->GetRootObject()));
-
-    UOdinJsonValue *NewValue = NewObject<UOdinJsonValue>();
-    NewValue->SetRootValue(NewVal);
-
-    return NewValue;
-}
-
-UOdinJsonValue *ConstructJsonValue(UObject                      *WorldContextObject,
-                                   const TSharedPtr<FJsonValue> &InValue)
-{
-    TSharedPtr<FJsonValue> NewVal = InValue;
 
     UOdinJsonValue *NewValue = NewObject<UOdinJsonValue>();
     NewValue->SetRootValue(NewVal);

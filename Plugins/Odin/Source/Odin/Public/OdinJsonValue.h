@@ -1,4 +1,4 @@
-/* Copyright (c) 2022-2023 4Players GmbH. All rights reserved. */
+/* Copyright (c) 2022-2024 4Players GmbH. All rights reserved. */
 
 #pragma once
 
@@ -65,9 +65,6 @@ class ODIN_API UOdinJsonValue : public UObject
               Category = "Odin|Json Utilities")
     static UOdinJsonValue *ConstructJsonValueObject(UObject         *WorldContextObject,
                                                     UOdinJsonObject *JsonObject);
-
-    static UOdinJsonValue *ConstructJsonValue(UObject                      *WorldContextObject,
-                                              const TSharedPtr<FJsonValue> &InValue);
 
     TSharedPtr<FJsonValue> &GetRootValue();
 
