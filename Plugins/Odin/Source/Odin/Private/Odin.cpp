@@ -1,4 +1,4 @@
-/* Copyright (c) 2022-2023 4Players GmbH. All rights reserved. */
+/* Copyright (c) 2022-2024 4Players GmbH. All rights reserved. */
 
 #include "Odin.h"
 #include "CoreMinimal.h"
@@ -15,7 +15,8 @@
 #include "IOSAppDelegate.h"
 #endif
 
-#include "OdinCore/include/odin.h"
+#include "AudioDevice.h"
+#include "odin_sdk.h"
 
 #define LOCTEXT_NAMESPACE "FOdinModule"
 
@@ -28,7 +29,7 @@ void FOdinModule::StartupModule()
     [[IOSAppDelegate GetDelegate] SetFeature:EAudioFeature::Record Active:true];
     [[IOSAppDelegate GetDelegate] SetFeature:EAudioFeature::VoiceChat Active:true];
 #endif
-    
+
 #if PLATFORM_WINDOWS || PLATFORM_LINUX
     FString BaseDir = IPluginManager::Get().FindPlugin("Odin")->GetBaseDir();
     FString LibraryPath;
@@ -63,18 +64,10 @@ void FOdinModule::StartupModule()
         UE_LOG(Odin, Log, TEXT("Loaded Library (%s)"), *(LibraryPath / libraryName));
     }
 #endif
-
-    auto sample_rate   = 48000;
-    auto channel_count = 2;
-
-    odin_startup_ex(ODIN_VERSION,
-                    OdinAudioStreamConfig{(uint32_t)sample_rate, (uint8_t)channel_count});
 }
 
 void FOdinModule::ShutdownModule()
 {
-    odin_shutdown();
-
 #if PLATFORM_WINDOWS || PLATFORM_LINUX
     FPlatformProcess::FreeDllHandle(OdinLibraryHandle);
     OdinLibraryHandle = nullptr;
@@ -83,4 +76,4 @@ void FOdinModule::ShutdownModule()
 
 #undef LOCTEXT_NAMESPACE
 
-IMPLEMENT_GAME_MODULE(FOdinModule, Odin)
+IMPLEMENT_MODULE(FOdinModule, Odin)
