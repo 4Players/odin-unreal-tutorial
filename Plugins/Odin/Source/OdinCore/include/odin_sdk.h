@@ -10,7 +10,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#define ODIN_VERSION "1.6.5"
+#define ODIN_VERSION "1.6.7"
 
 /**
  * Known types of a media stream.
@@ -605,7 +605,7 @@ OdinReturnCode odin_room_destroy(OdinRoomHandle room);
 OdinReturnCode odin_room_set_event_callback(OdinRoomHandle room,
                                             void (*callback)(OdinRoomHandle          room,
                                                              const struct OdinEvent *event,
-                                                             void *                  extra_data),
+                                                             void                   *extra_data),
                                             void *extra_data);
 
 /**
